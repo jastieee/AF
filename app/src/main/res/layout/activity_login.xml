@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#000000">
+
+    <!-- Decorative gradient orb top-right -->
+    <View
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-60dp"
+        android:layout_marginEnd="-60dp"
+        android:background="@drawable/bg_orb_purple" />
+
+    <!-- Decorative gradient orb bottom-left -->
+    <View
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-50dp"
+        android:layout_marginStart="-50dp"
+        android:background="@drawable/bg_orb_lilac" />
+
+    <!-- Main Card Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp">
+
+        <!-- Logo / Icon area -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Logo Circle -->
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal">
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@drawable/bg_logo_circle" />
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_fitness_center"
+                    app:tint="#FAEB92" />
+            </FrameLayout>
+
+            <!-- App Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="ANYTIME FITNESS"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- Subtitle -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Asset Management System"
+                android:textColor="#CC66DA"
+                android:textSize="12sp"
+                android:letterSpacing="0.08"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+        <!-- Divider line with gold accent -->
+        <View
+            android:layout_width="48dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="32dp"
+            android:background="#FAEB92" />
+
+        <!-- Card Panel -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_login_card"
+            android:padding="28dp">
+
+            <!-- Welcome Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome Back"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:fontFamily="@font/bebas_neue"
+                android:letterSpacing="0.05" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="Sign in to continue"
+                android:textColor="#80FFFFFF"
+                android:textSize="13sp" />
+
+            <!-- Username Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="USERNAME"
+                android:textColor="#CC66DA"
+                android:textSize="11sp"
+                android:letterSpacing="0.12"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Username Input -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="20dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_input_field" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_person"
+                        app:tint="#9929EA" />
+
+                    <EditText
+                        android:id="@+id/etUsername"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:background="@null"
+                        android:hint="Enter username"
+                        android:hintTextColor="#50FFFFFF"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:inputType="text"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- Password Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PASSWORD"
+                android:textColor="#CC66DA"
+                android:textSize="11sp"
+                android:letterSpacing="0.12"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Password Input -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="28dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_input_field" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_lock"
+                        app:tint="#9929EA" />
+
+                    <EditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:background="@null"
+                        android:hint="Enter password"
+                        android:hintTextColor="#50FFFFFF"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:inputType="textPassword"
+                        android:imeOptions="actionDone"
+                        android:singleLine="true" />
+
+                    <ImageView
+                        android:id="@+id/ivTogglePassword"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_visibility_off"
+                        app:tint="#60FFFFFF"
+                        android:clickable="true"
+                        android:focusable="true" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- Sign In Button -->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="SIGN IN"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:letterSpacing="0.1"
+                android:background="@drawable/bg_button_primary"
+                android:fontFamily="@font/bebas_neue"
+                android:elevation="4dp" />
+
+        </LinearLayout>
+
+        <!-- Footer -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:text="© 2026 NSSI · Anytime Fitness"
+            android:textColor="#30FFFFFF"
+            android:textSize="11sp"
+            android:letterSpacing="0.05" />
+
+    </LinearLayout>
+
+</RelativeLayout>

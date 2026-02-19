@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!--  AMBIENT ORBS (decorative, same as login)  -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <View
+        android:id="@+id/orbTopRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_orb_purple"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.35"
+        app:layout_constraintDimensionRatio="1:1" />
+
+    <View
+        android:id="@+id/orbBottomLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_orb_lilac"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.22"
+        app:layout_constraintDimensionRatio="1:1" />
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!--  TOP HEADER BAR                            -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.14"
+        app:layout_constraintBottom_toTopOf="@+id/gridContainer">
+
+        <!-- Left: Logo + Title -->
+        <LinearLayout
+            android:id="@+id/headerLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!-- Small logo badge -->
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="12dp">
+                <View
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_logo_circle" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_fitness_center"
+                    app:tint="#FAEB92" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ANYTIME FITNESS"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:letterSpacing="0.12"
+                    android:fontFamily="@font/bebas_neue" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Asset Management System"
+                    android:textColor="#CC66DA"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.04" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Right: User info + Logout -->
+        <LinearLayout
+            android:id="@+id/headerRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end"
+                android:layout_marginEnd="12dp">
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Administrator"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/bebas_neue"
+                    android:letterSpacing="0.06" />
+
+                <TextView
+                    android:id="@+id/tvUserRole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin"
+                    android:textColor="#FAEB92"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.08" />
+            </LinearLayout>
+
+            <!-- Logout Button -->
+            <FrameLayout
+                android:id="@+id/btnLogout"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_icon_btn"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_logout"
+                    app:tint="#CC66DA" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <!-- Bottom separator line -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@drawable/bg_header_div"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!--  WELCOME TEXT                              -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DASHBOARD"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:fontFamily="@font/bebas_neue"
+        android:letterSpacing="0.2"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerBar" />
+
+    <View
+        android:id="@+id/tvWelcomeAccent"
+        android:layout_width="24dp"
+        android:layout_height="2dp"
+        android:background="#FAEB92"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!--  2x2 MODULE GRID                           -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcomeAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rowCount="2"
+        app:columnCount="2">
+
+        <!-- ─── CARD 1: INVENTORY ─── -->
+        <FrameLayout
+            android:id="@+id/cardInventory"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="7dp"
+            android:background="@drawable/bg_module_card_purple"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_row="0"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
+
+            <!-- Accent top bar -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#9929EA"
+                android:layout_gravity="top" />
+
+            <!-- Card number watermark -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01"
+                android:textColor="#089929EA"
+                android:textSize="56sp"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="-4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <!-- Icon circle -->
+                <FrameLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginBottom="12dp">
+                    <View
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_card_icon_circle_purple" />
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_inventory"
+                        app:tint="#FFFFFF" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INVENTORY"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/bebas_neue"
+                    android:letterSpacing="0.1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Track &amp; manage assets"
+                    android:textColor="#80FFFFFF"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginTop="3dp" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- ─── CARD 2: MAINTENANCE ─── -->
+        <FrameLayout
+            android:id="@+id/cardMaintenance"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="7dp"
+            android:background="@drawable/bg_module_card_lilac"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_row="0"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#CC66DA"
+                android:layout_gravity="top" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="02"
+                android:textColor="#08CC66DA"
+                android:textSize="56sp"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="-4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <FrameLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginBottom="12dp">
+                    <View
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_card_icon_circle_lilac" />
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_build"
+                        app:tint="#FFFFFF" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MAINTENANCE"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/bebas_neue"
+                    android:letterSpacing="0.1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service &amp; repair records"
+                    android:textColor="#80FFFFFF"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginTop="3dp" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- ─── CARD 3: LOGS ─── -->
+        <FrameLayout
+            android:id="@+id/cardLogs"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="7dp"
+            android:background="@drawable/bg_module_card_gold"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_row="1"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#FAEB92"
+                android:layout_gravity="top" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="03"
+                android:textColor="#0CFAEB92"
+                android:textSize="56sp"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="-4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <FrameLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginBottom="12dp">
+                    <View
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_card_icon_circle_gold" />
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_history"
+                        app:tint="#000000" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOGS"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/bebas_neue"
+                    android:letterSpacing="0.1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Activity &amp; audit trail"
+                    android:textColor="#80FFFFFF"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginTop="3dp" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- ─── CARD 4: USER MANAGEMENT ─── -->
+        <FrameLayout
+            android:id="@+id/cardUserManagement"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="7dp"
+            android:background="@drawable/bg_module_card_dark"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:layout_row="1"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#FAEB92"
+                android:layout_gravity="top" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="04"
+                android:textColor="#0CFFFFFF"
+                android:textSize="56sp"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="-4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <FrameLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginBottom="12dp">
+                    <View
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_card_icon_circle_purple" />
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_manage_accounts"
+                        app:tint="#FFFFFF" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USER MANAGEMENT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/bebas_neue"
+                    android:letterSpacing="0.08"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accounts &amp; permissions"
+                    android:textColor="#80FFFFFF"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginTop="3dp" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+    </androidx.gridlayout.widget.GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
