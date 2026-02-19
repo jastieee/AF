@@ -1,16 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.Anytimefitness" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+    <!-- Base application theme (Day) -->
+    <style name="Theme.Anytimefitness" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">#9929EA</item>
+        <item name="colorPrimaryVariant">#7A1BC4</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">#CC66DA</item>
+        <item name="colorSecondaryVariant">#B44DC4</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <!-- Background & surface -->
+        <item name="android:colorBackground">#000000</item>
+        <item name="colorSurface">#111111</item>
+        <item name="colorOnBackground">#FFFFFF</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        <!-- Status bar — transparent so our layouts go edge to edge -->
+        <item name="android:statusBarColor">#00000000</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <!-- Navigation bar -->
+        <item name="android:navigationBarColor">#000000</item>
+        <!-- Alert Dialog styling -->
+        <item name="alertDialogTheme">@style/DarkAlertDialog</item>
+        <!-- Ripple color for card tap feedback -->
+        <item name="colorControlHighlight">#309929EA</item>
     </style>
+
+    <!-- Dark Alert Dialog -->
+    <style name="DarkAlertDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_dialog</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="colorAccent">#9929EA</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DialogButtonPositive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DialogButtonNegative</item>
+    </style>
+
+    <style name="DialogButtonPositive" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#FAEB92</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DialogButtonNegative" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#CC66DA</item>
+    </style>
+
 </resources>

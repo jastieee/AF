@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_list_item"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <!-- Avatar circle with initial -->
+        <FrameLayout
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="10dp">
+            <View
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_card_icon_circle_purple" />
+            <TextView
+                android:id="@+id/tvUserInitial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="A"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:fontFamily="@font/bebas_neue" />
+        </FrameLayout>
+
+        <!-- Name + role -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvItemUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Administrator"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:singleLine="true"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/tvItemUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\@admin"
+                android:textColor="#60FFFFFF"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Role badge -->
+        <TextView
+            android:id="@+id/tvItemRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin"
+            android:textColor="#FAEB92"
+            android:textSize="9sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.08"
+            android:background="@drawable/bg_role_badge"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp" />
+
+    </LinearLayout>
+</FrameLayout>
