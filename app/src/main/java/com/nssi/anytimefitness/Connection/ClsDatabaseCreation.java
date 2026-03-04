@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class ClsDatabaseCreation extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "GymAssets.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 4; // bumped from 1 → 2 for Settings module
 
     public static final String TABLE_ASSET = "asset_inventory";
     public static final String TABLE_MAINTENANCE = "asset_maintenance";
@@ -55,6 +55,7 @@ public class ClsDatabaseCreation extends SQLiteOpenHelper {
     public static final String MAINT_MATERIALS_USED = "materials_used";
     public static final String MAINT_SOLUTION_APPLIED = "solution_applied";
     public static final String MAINT_DATE_COMPLETED = "date_completed";
+    public static final String MAINT_STATUS = "status";
 
     // Users Table Columns
     public static final String COL_USER_ID = "id";
@@ -63,7 +64,6 @@ public class ClsDatabaseCreation extends SQLiteOpenHelper {
     public static final String COL_USER_EMAIL = "email";
     public static final String COL_USER_PASSWORD = "password";
     public static final String COL_USER_ROLE = "role";
-
 
     // Asset Types Table Columns
     public static final String COL_ASSET_TYPE_ID = "id";
@@ -75,7 +75,7 @@ public class ClsDatabaseCreation extends SQLiteOpenHelper {
     public static final String COL_SERVICE_TYPE_NAME = "service_type_name";
     public static final String COL_SERVICE_TYPE_DESCRIP = "service_type_descrip";
 
-    // Activity Log Tables
+    // Activity Log
     public static final String LOG_ID = "id";
     public static final String LOG_USER_ID = "user_id";
     public static final String LOG_USERNAME = "username";
@@ -96,7 +96,7 @@ public class ClsDatabaseCreation extends SQLiteOpenHelper {
 
     // Role Permissions
     public static final String COL_PERM_ID  = "id";
-    public static final String COL_PERM_USER_ID = "user_id";       // changed from role_id
+    public static final String COL_PERM_USER_ID = "user_id";
     public static final String COL_PERM_MODULE_ID = "module_id";
     public static final String COL_PERM_ACCESS = "can_access";
 
@@ -195,11 +195,12 @@ public class ClsDatabaseCreation extends SQLiteOpenHelper {
                     COL_PERM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_PERM_USER_ID + " INTEGER NOT NULL, " +
                     COL_PERM_MODULE_ID + " INTEGER NOT NULL, " +
-                    COL_PERM_ACCESS + " INTEGER DEFAULT 0, " +  // 0 = false, 1 = true
+                    COL_PERM_ACCESS + " INTEGER DEFAULT 0, " +
                     "FOREIGN KEY(" + COL_PERM_USER_ID + ") REFERENCES " + TABLE_ROLES + "(" + COL_ROLE_ID + "), " +
                     "FOREIGN KEY(" + COL_PERM_MODULE_ID + ") REFERENCES " + TABLE_MODULES + "(" + COL_MODULE_ID + "), " +
-                    "UNIQUE(" + COL_PERM_USER_ID + ", " + COL_PERM_MODULE_ID + ")" +  // one permission row per role+module
+                    "UNIQUE(" + COL_PERM_USER_ID + ", " + COL_PERM_MODULE_ID + ")" +
                     ");";
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_ASSET_TABLE);
@@ -220,20 +221,36 @@ public class ClsDatabaseCreation extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ASSET);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MAINTENANCE);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ASSET_TYPE);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SERVICE_TYPE);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACTIVITY_LOG);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ROLES);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_MODULES);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ROLE_PERMISSIONS);
-        onCreate(db);
+        // Version 1 → 2: add Settings module + its permission for admin
+        if (oldVersion < 3) {
+
+            db.execSQL("ALTER TABLE " + TABLE_MAINTENANCE + " ADD COLUMN status TEXT DEFAULT 'Open'");
+
+            db.execSQL(
+                "INSERT OR IGNORE INTO " + TABLE_MODULES +
+                " (" + COL_MODULE_NAME + ", " + COL_MODULE_DESCRIP + ") " +
+                "VALUES ('Settings', 'Manage asset types and service types')"
+            );
+
+            Cursor c = db.rawQuery(
+                "SELECT " + COL_MODULE_ID + " FROM " + TABLE_MODULES +
+                " WHERE " + COL_MODULE_NAME + " = 'Settings' LIMIT 1", null);
+            if (c.moveToFirst()) {
+                int settingsModuleId = c.getInt(0);
+                ContentValues cv = new ContentValues();
+                cv.put(COL_PERM_USER_ID,   1); // default admin
+                cv.put(COL_PERM_MODULE_ID, settingsModuleId);
+                cv.put(COL_PERM_ACCESS,    1);
+                db.insertWithOnConflict(TABLE_ROLE_PERMISSIONS, null, cv,
+                        SQLiteDatabase.CONFLICT_IGNORE);
+            }
+            c.close();
+        }
     }
 
-
-    // SEED DEFAULT ROLES
+    // ─────────────────────────────────────────────
+    //  SEED ROLES
+    // ─────────────────────────────────────────────
     private void seedRoles(SQLiteDatabase db) {
         String[] roles = {"Admin", "Staff"};
         String[] descs = {
@@ -248,20 +265,25 @@ public class ClsDatabaseCreation extends SQLiteOpenHelper {
         }
     }
 
+    // ─────────────────────────────────────────────
+    //  SEED MODULES — Settings added as module 6
+    // ─────────────────────────────────────────────
     private void seedModules(SQLiteDatabase db) {
         String[] modules = {
                 "Inventory",
                 "Maintenance",
                 "Logs",
                 "Reports",
-                "User Management"
+                "User Management",
+                "Settings"          // ← new
         };
         String[] descs = {
                 "Asset inventory tracking and management",
                 "Asset maintenance and service records",
                 "System activity and audit logs",
                 "Generate and view reports",
-                "Manage user accounts and roles"
+                "Manage user accounts and roles",
+                "Manage asset types and service types"  // ← new
         };
         for (int i = 0; i < modules.length; i++) {
             ContentValues values = new ContentValues();
@@ -271,25 +293,30 @@ public class ClsDatabaseCreation extends SQLiteOpenHelper {
         }
     }
 
+    // ─────────────────────────────────────────────
+    //  SEED DEFAULT ADMIN
+    // ─────────────────────────────────────────────
     private void seedDefaultAdmin(SQLiteDatabase db) {
         ContentValues values = new ContentValues();
         values.put(COL_USER_NAME, "Administrator");
         values.put(COL_USER_USERNAME, "admin");
         values.put(COL_USER_EMAIL, "admin@anytimefitness.com");
-        values.put(COL_USER_PASSWORD, "admin123"); // 🔴 hash this in production
+        values.put(COL_USER_PASSWORD, "admin123");
         values.put(COL_USER_ROLE, "Admin");
         db.insert(TABLE_USERS, null, values);
     }
 
-    // Now seeds per user_id=1 (the default admin)
+    // ─────────────────────────────────────────────
+    //  SEED DEFAULT PERMISSIONS — now 6 modules
+    // ─────────────────────────────────────────────
     private void seedDefaultPermissions(SQLiteDatabase db) {
-        int totalModules = 5; // Inventory, Maintenance, Logs, Reports, User Management
+        int totalModules = 6; // includes Settings
 
         for (int moduleId = 1; moduleId <= totalModules; moduleId++) {
             ContentValues values = new ContentValues();
-            values.put(COL_PERM_USER_ID, 1);   // user_id=1 = default admin
+            values.put(COL_PERM_USER_ID, 1);
             values.put(COL_PERM_MODULE_ID, moduleId);
-            values.put(COL_PERM_ACCESS, 1);    // full access to all modules
+            values.put(COL_PERM_ACCESS, 1);
             db.insert(TABLE_ROLE_PERMISSIONS, null, values);
         }
     }

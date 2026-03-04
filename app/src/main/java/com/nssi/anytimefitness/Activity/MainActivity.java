@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout btnLogout;
 
     // Module cards
-    private FrameLayout cardInventory, cardMaintenance, cardLogs, cardUserManagement;
+    private FrameLayout cardInventory, cardMaintenance, cardLogs, cardUserManagement, cardSettings;
 
     // Session data (passed from LoginActivity)
     private int userId;
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String MODULE_MAINTENANCE      = "Maintenance";
     private static final String MODULE_LOGS             = "Logs";
     private static final String MODULE_USER_MANAGEMENT  = "User Management";
+    private static final String MODULE_SETTINGS         = "Settings";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         userRole = getIntent().getStringExtra("USER_ROLE");
         username = getIntent().getStringExtra("USERNAME");
 
-        // Safety check — if no valid session, boot back to login
         if (userId == -1 || userName == null || userRole == null) {
             redirectToLogin();
             return;
@@ -74,9 +74,8 @@ public class MainActivity extends AppCompatActivity {
         animateCardsIn();
     }
 
-    // ─────────────────────────────────────────────
+
     //  BIND VIEWS
-    // ─────────────────────────────────────────────
     private void bindViews() {
         tvUserName          = findViewById(R.id.tvUserName);
         tvUserRole          = findViewById(R.id.tvUserRole);
@@ -85,19 +84,14 @@ public class MainActivity extends AppCompatActivity {
         cardMaintenance     = findViewById(R.id.cardMaintenance);
         cardLogs            = findViewById(R.id.cardLogs);
         cardUserManagement  = findViewById(R.id.cardUserManagement);
+        cardSettings        = findViewById(R.id.cardSettings);
     }
 
-    // ─────────────────────────────────────────────
-    //  POPULATE HEADER WITH SESSION DATA
-    // ─────────────────────────────────────────────
     private void populateHeader() {
         tvUserName.setText(userName);
         tvUserRole.setText(userRole);
     }
 
-    // ─────────────────────────────────────────────
-    //  CHECK PERMISSIONS FROM DB & SHOW/HIDE CARDS
-    // ─────────────────────────────────────────────
     private void applyPermissions() {
         cardInventory.setVisibility(
                 hasAccess(MODULE_INVENTORY) ? View.VISIBLE : View.GONE);
@@ -108,19 +102,14 @@ public class MainActivity extends AppCompatActivity {
         cardLogs.setVisibility(
                 hasAccess(MODULE_LOGS) ? View.VISIBLE : View.GONE);
 
+        cardSettings.setVisibility(
+                hasAccess(MODULE_SETTINGS) ? View.VISIBLE : View.GONE);
+
         cardUserManagement.setVisibility(
                 hasAccess(MODULE_USER_MANAGEMENT) ? View.VISIBLE : View.GONE);
     }
 
-    /**
-     * Queries role_permissions table to check if this user's role
-     * has can_access = 1 for the given module name.
-     *
-     * Flow:
-     *  1. Get role_id from roles table using userRole string
-     *  2. Get module_id from modules table using module name
-     *  3. Check role_permissions for (role_id, module_id) with can_access = 1
-     */
+
     private boolean hasAccess(String moduleName) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         boolean access = false;
@@ -142,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             );
 
             if (cursor != null) {
-                access = cursor.moveToFirst(); // true = row exists = has access
+                access = cursor.moveToFirst();
                 cursor.close();
             }
         } catch (Exception e) {
@@ -154,25 +143,23 @@ public class MainActivity extends AppCompatActivity {
         return access;
     }
 
-    // ─────────────────────────────────────────────
-    //  CARD CLICK LISTENERS
-    // ─────────────────────────────────────────────
     private void setCardListeners() {
 
-//        cardInventory.setOnClickListener(v -> navigateTo(InventoryActivity.class));
-//
-//        cardMaintenance.setOnClickListener(v -> navigateTo(MaintenanceActivity.class));
-//
+        cardInventory.setOnClickListener(v -> navigateTo(InventoryActivity.class));
+
+        cardMaintenance.setOnClickListener(v -> navigateTo(MaintenanceActivity.class));
+
 //        cardLogs.setOnClickListener(v -> navigateTo(LogsActivity.class));
-//
+
+        cardSettings.setOnClickListener(v -> navigateTo(SettingsActivity.class));
+
         cardUserManagement.setOnClickListener(v -> navigateTo(UserManagementActivity.class));
 
         btnLogout.setOnClickListener(v -> showLogoutDialog());
     }
 
-    // ─────────────────────────────────────────────
-    //  NAVIGATE TO MODULE — pass session along
-    // ─────────────────────────────────────────────
+
+    //  NAVIGATE TO MODULE
     private void navigateTo(Class<?> targetActivity) {
         Intent intent = new Intent(MainActivity.this, targetActivity);
         intent.putExtra("USER_ID",   userId);
@@ -182,9 +169,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // ─────────────────────────────────────────────
+
     //  LOGOUT CONFIRMATION DIALOG
-    // ─────────────────────────────────────────────
     private void showLogoutDialog() {
         new AlertDialog.Builder(this, R.style.DarkAlertDialog)
                 .setTitle("Sign Out")
@@ -197,9 +183,8 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    // ─────────────────────────────────────────────
+
     //  LOG ACTIVITY TO DB
-    // ─────────────────────────────────────────────
     private void logActivity(String action, String description) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         try {
@@ -217,9 +202,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // ─────────────────────────────────────────────
-    //  REDIRECT TO LOGIN & CLEAR BACK STACK
-    // ─────────────────────────────────────────────
     private void redirectToLogin() {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -227,12 +209,9 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    // ─────────────────────────────────────────────
-    //  CARD ENTRANCE ANIMATIONS (staggered fade+slide up)
-    // ─────────────────────────────────────────────
     private void animateCardsIn() {
-        FrameLayout[] cards = { cardInventory, cardMaintenance, cardLogs, cardUserManagement };
-        int delay = 80; // ms between each card
+        FrameLayout[] cards = { cardInventory, cardMaintenance, cardLogs, cardUserManagement, cardSettings };
+        int delay = 80;
 
         for (int i = 0; i < cards.length; i++) {
             if (cards[i].getVisibility() != View.VISIBLE) continue;
@@ -254,9 +233,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // ─────────────────────────────────────────────
-    //  BACK PRESS — ask before leaving
-    // ─────────────────────────────────────────────
     @Override
     public void onBackPressed() {
         super.onBackPressed();

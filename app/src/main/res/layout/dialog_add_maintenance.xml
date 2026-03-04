@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvDialogTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADD MAINTENANCE RECORD"
+            android:textColor="#1A1A2E"
+            android:textSize="18sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.08" />
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="2dp"
+            android:background="#C3ACD0"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- ══════════════════════════════ -->
+        <!--  SCAN SECTION                 -->
+        <!-- ══════════════════════════════ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCAN ASSET"
+            android:textColor="#7743DB"
+            android:textSize="11sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="6dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_input_field">
+                <EditText
+                    android:id="@+id/etScanInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:background="@null"
+                    android:hint="Scan barcode or asset tag..."
+                    android:textColorHint="#80C3ACD0"
+                    android:textColor="#1A1A2E"
+                    android:textSize="12sp"
+                    android:singleLine="true"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/btnScan"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_button_primary"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_search"
+                    app:tint="#FFFBF5" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <!-- Error label -->
+        <TextView
+            android:id="@+id/tvScanError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asset not found. Please check the barcode or asset tag."
+            android:textColor="#FF6B6B"
+            android:textSize="10sp"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#20C3ACD0"
+            android:layout_marginBottom="14dp" />
+
+        <!-- ══════════════════════════════ -->
+        <!--  ASSET DETAILS (READ ONLY)    -->
+        <!-- ══════════════════════════════ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ASSET DETAILS"
+            android:textColor="#7743DB"
+            android:textSize="11sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="10dp" />
+
+        <!-- Two column asset details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="4dp">
+
+            <!-- LEFT -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="8dp">
+
+                <TextView style="@style/FieldLabel" android:text="ASSET NAME" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="8dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" android:alpha="0.6"/>
+                    <TextView
+                        android:id="@+id/tvAssetName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:text="—"
+                        android:textColor="#80443355"
+                        android:textSize="11sp" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="CLUB" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="8dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" android:alpha="0.6"/>
+                    <TextView
+                        android:id="@+id/tvClub"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:text="—"
+                        android:textColor="#80443355"
+                        android:textSize="11sp" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="TYPE OF ASSET" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="8dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" android:alpha="0.6"/>
+                    <TextView
+                        android:id="@+id/tvTypeOfAsset"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:text="—"
+                        android:textColor="#80443355"
+                        android:textSize="11sp" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="MAKE / BRAND" />
+                <FrameLayout style="@style/FieldWrap">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" android:alpha="0.6"/>
+                    <TextView
+                        android:id="@+id/tvMakeBrand"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:text="—"
+                        android:textColor="#80443355"
+                        android:textSize="11sp" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <!-- RIGHT -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <TextView style="@style/FieldLabel" android:text="MODEL" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="8dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" android:alpha="0.6"/>
+                    <TextView
+                        android:id="@+id/tvModel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:text="—"
+                        android:textColor="#80443355"
+                        android:textSize="11sp" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="SERIAL NUMBER" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="8dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" android:alpha="0.6"/>
+                    <TextView
+                        android:id="@+id/tvSerialNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:text="—"
+                        android:textColor="#80443355"
+                        android:textSize="11sp" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="ASSET TAG NO." />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="8dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" android:alpha="0.6"/>
+                    <TextView
+                        android:id="@+id/tvAssetTagNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:text="—"
+                        android:textColor="#80443355"
+                        android:textSize="11sp" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="BAR CODE" />
+                <FrameLayout style="@style/FieldWrap">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" android:alpha="0.6"/>
+                    <TextView
+                        android:id="@+id/tvBarCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:gravity="center_vertical"
+                        android:text="—"
+                        android:textColor="#80443355"
+                        android:textSize="11sp" />
+                </FrameLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#20C3ACD0"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp" />
+
+        <!-- ══════════════════════════════ -->
+        <!--  SERVICE DETAILS (EDITABLE)   -->
+        <!-- ══════════════════════════════ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SERVICE DETAILS"
+            android:textColor="#7743DB"
+            android:textSize="11sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.12"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="8dp">
+
+            <!-- Date of Service -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="8dp">
+                <TextView style="@style/FieldLabel" android:text="DATE OF SERVICE *" />
+                <FrameLayout style="@style/FieldWrap">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText
+                        android:id="@+id/etDateOfService"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:background="@null"
+                        android:hint="YYYY-MM-DD"
+                        android:textColorHint="#80C3ACD0"
+                        android:textColor="#1A1A2E"
+                        android:textSize="11sp"
+                        android:inputType="text" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Type of Service -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+                <TextView style="@style/FieldLabel" android:text="TYPE OF SERVICE *" />
+                <FrameLayout style="@style/FieldWrap">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <Spinner
+                        android:id="@+id/spinnerServiceType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:background="@null"
+                        android:popupBackground="#FFFBF5"
+                        android:spinnerMode="dropdown" />
+                </FrameLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Status -->
+        <TextView style="@style/FieldLabel" android:text="STATUS *" />
+        <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="8dp">
+            <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+            <Spinner
+                android:id="@+id/spinnerStatus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="@null"
+                android:popupBackground="#FFFBF5"
+                android:spinnerMode="dropdown" />
+        </FrameLayout>
+
+        <!-- Issue Details -->
+        <TextView style="@style/FieldLabel" android:text="ISSUE DETAILS" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_input_field">
+            <EditText
+                android:id="@+id/etIssueDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="8dp"
+                android:background="@null"
+                android:hint="Describe the issue..."
+                android:textColorHint="#80C3ACD0"
+                android:textColor="#1A1A2E"
+                android:textSize="11sp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:maxLines="3" />
+        </FrameLayout>
+
+        <!-- Diagnosis -->
+        <TextView style="@style/FieldLabel" android:text="DIAGNOSIS / ROOT CAUSE" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_input_field">
+            <EditText
+                android:id="@+id/etDiagnosis"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="8dp"
+                android:background="@null"
+                android:hint="Root cause..."
+                android:textColorHint="#80C3ACD0"
+                android:textColor="#1A1A2E"
+                android:textSize="11sp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:maxLines="3" />
+        </FrameLayout>
+
+        <!-- Materials Used -->
+        <TextView style="@style/FieldLabel" android:text="MATERIALS USED" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_input_field">
+            <EditText
+                android:id="@+id/etMaterialsUsed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="8dp"
+                android:background="@null"
+                android:hint="List materials used..."
+                android:textColorHint="#80C3ACD0"
+                android:textColor="#1A1A2E"
+                android:textSize="11sp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:maxLines="3" />
+        </FrameLayout>
+
+        <!-- Solution Applied -->
+        <TextView style="@style/FieldLabel" android:text="SOLUTION APPLIED" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_input_field">
+            <EditText
+                android:id="@+id/etSolutionApplied"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="8dp"
+                android:background="@null"
+                android:hint="Solution applied..."
+                android:textColorHint="#80C3ACD0"
+                android:textColor="#1A1A2E"
+                android:textSize="11sp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:maxLines="3" />
+        </FrameLayout>
+
+        <!-- Date Completed -->
+        <TextView style="@style/FieldLabel" android:text="DATE COMPLETED" />
+        <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="20dp">
+            <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+            <EditText
+                android:id="@+id/etDateCompleted"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="@null"
+                android:hint="YYYY-MM-DD (leave blank if not yet done)"
+                android:textColorHint="#80C3ACD0"
+                android:textColor="#1A1A2E"
+                android:textSize="11sp"
+                android:inputType="text" />
+        </FrameLayout>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnDialogCancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="CANCEL"
+                android:textColor="#C3ACD0"
+                android:textSize="12sp"
+                android:fontFamily="@font/bebas_neue"
+                android:background="@drawable/bg_perm_card_off"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnDialogSave"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="SAVE RECORD"
+                android:textColor="#FFFBF5"
+                android:textSize="12sp"
+                android:fontFamily="@font/bebas_neue"
+                android:background="@drawable/bg_button_primary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

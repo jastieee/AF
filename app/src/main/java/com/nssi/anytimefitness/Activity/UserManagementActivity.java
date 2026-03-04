@@ -95,10 +95,6 @@ public class UserManagementActivity extends AppCompatActivity {
         loadUserList();
         setFormMode(false);
     }
-
-    // ─────────────────────────────────────────────
-    //  BIND
-    // ─────────────────────────────────────────────
     private void bindViews() {
         drawerLayout      = findViewById(R.id.drawerLayout);
         btnBack           = findViewById(R.id.btnBack);
@@ -129,9 +125,6 @@ public class UserManagementActivity extends AppCompatActivity {
         cbUserManagement = findViewById(R.id.cbUserManagement);
     }
 
-    // ─────────────────────────────────────────────
-    //  DRAWER
-    // ─────────────────────────────────────────────
     private void setupDrawer() {
         // Disable swipe — only open via button
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
@@ -145,9 +138,6 @@ public class UserManagementActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
     }
 
-    // ─────────────────────────────────────────────
-    //  ROLE SPINNER
-    // ─────────────────────────────────────────────
     private void setupRoleSpinner() {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, R.layout.spinner_item, new String[]{"Admin", "Staff"});
@@ -156,9 +146,6 @@ public class UserManagementActivity extends AppCompatActivity {
         spinnerRole.setSelection(1);
     }
 
-    // ─────────────────────────────────────────────
-    //  PERMISSION CARDS — card click toggles checkbox
-    // ─────────────────────────────────────────────
     private void setupPermissionCards() {
         permCardInventory.setOnClickListener(v -> {
             cbInventory.setChecked(!cbInventory.isChecked());
@@ -189,9 +176,8 @@ public class UserManagementActivity extends AppCompatActivity {
         updateCardBackground(card, checked);
     }
 
-    // ─────────────────────────────────────────────
-    //  SEARCH
-    // ─────────────────────────────────────────────
+
+
     private void setupSearch() {
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int i, int i1, int i2) {}
@@ -204,9 +190,6 @@ public class UserManagementActivity extends AppCompatActivity {
         });
     }
 
-    // ─────────────────────────────────────────────
-    //  BUTTONS
-    // ─────────────────────────────────────────────
     private void setupButtons() {
         btnClearForm.setOnClickListener(v -> { clearForm(); setFormMode(false); });
         btnSave.setOnClickListener(v -> {
@@ -216,9 +199,7 @@ public class UserManagementActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(v -> showDeleteConfirmation());
     }
 
-    // ─────────────────────────────────────────────
     //  LOAD LIST
-    // ─────────────────────────────────────────────
     private void loadUserList() {
         userList = userManager.getAllUsers();
         tvUserCount.setText(String.valueOf(userList.size()));
@@ -238,9 +219,6 @@ public class UserManagementActivity extends AppCompatActivity {
         }
     }
 
-    // ─────────────────────────────────────────────
-    //  LOAD USER INTO FORM
-    // ─────────────────────────────────────────────
     private void loadUserIntoForm(int userId) {
         UserModel user = userManager.getUserById(userId);
         if (user == null) return;
@@ -264,9 +242,7 @@ public class UserManagementActivity extends AppCompatActivity {
         setPermissionCard(permCardUserMgmt,    cbUserManagement, Boolean.TRUE.equals(perms.get(MOD_USER_MANAGEMENT)));
     }
 
-    // ─────────────────────────────────────────────
     //  CREATE / UPDATE / DELETE
-    // ─────────────────────────────────────────────
     private void handleCreateUser() {
         if (!validateForm(false)) return;
         long id = userManager.createUser(buildUserModel(), buildPermissions());
@@ -314,9 +290,7 @@ public class UserManagementActivity extends AppCompatActivity {
                 .setNegativeButton("Cancel", null).show();
     }
 
-    // ─────────────────────────────────────────────
     //  VALIDATION
-    // ─────────────────────────────────────────────
     private boolean validateForm(boolean isEdit) {
         String name     = etFullName.getText().toString().trim();
         String username = etUsername.getText().toString().trim();
@@ -341,9 +315,7 @@ public class UserManagementActivity extends AppCompatActivity {
         return true;
     }
 
-    // ─────────────────────────────────────────────
     //  HELPERS
-    // ─────────────────────────────────────────────
     private UserModel buildUserModel() {
         UserModel u = new UserModel();
         u.name     = etFullName.getText().toString().trim();
@@ -399,9 +371,7 @@ public class UserManagementActivity extends AppCompatActivity {
         } finally { db.close(); }
     }
 
-    // ─────────────────────────────────────────────
-    //  BACK — close drawer first if open
-    // ─────────────────────────────────────────────
+    //  BACK —
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -411,9 +381,7 @@ public class UserManagementActivity extends AppCompatActivity {
         }
     }
 
-    // ═══════════════════════════════════════════
     //  LIST ADAPTER
-    // ═══════════════════════════════════════════
     private class UserListAdapter extends BaseAdapter {
         private List<UserModel> data;
         UserListAdapter(List<UserModel> data) { this.data = data; }

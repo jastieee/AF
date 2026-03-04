@@ -18,9 +18,7 @@ public class ClsUserManagement {
         dbHelper = new ClsDatabaseCreation(context);
     }
 
-    // ═══════════════════════════════════════════════════════
     //  MODEL — User with permissions
-    // ═══════════════════════════════════════════════════════
 
     public static class UserModel {
         public int id;
@@ -40,9 +38,7 @@ public class ClsUserManagement {
         }
     }
 
-    // ═══════════════════════════════════════════════════════
     //  READ — Get all users
-    // ═══════════════════════════════════════════════════════
 
     public List<UserModel> getAllUsers() {
         List<UserModel> users = new ArrayList<>();
@@ -81,10 +77,7 @@ public class ClsUserManagement {
         return users;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  READ — Get single user by ID (with permissions)
-    // ═══════════════════════════════════════════════════════
-
+    //  READ
     public UserModel getUserById(int userId) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         UserModel user = null;
@@ -118,9 +111,7 @@ public class ClsUserManagement {
         return user;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  READ — Get all modules from DB
-    // ═══════════════════════════════════════════════════════
+    //  READ MODULES
 
     public List<Map<String, Object>> getAllModules() {
         List<Map<String, Object>> modules = new ArrayList<>();
@@ -155,10 +146,8 @@ public class ClsUserManagement {
         return modules;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  READ — Get permissions for a specific user
-    //  Returns Map<moduleName, canAccess>
-    // ═══════════════════════════════════════════════════════
+    //  READ
+
 
     public Map<String, Boolean> getPermissionsForUser(int userId) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -197,10 +186,7 @@ public class ClsUserManagement {
         return perms;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  CREATE — Insert new user + their permissions
-    //  Returns: inserted user ID, or -1 if failed
-    // ═══════════════════════════════════════════════════════
+
 
     public long createUser(UserModel user, Map<String, Boolean> permissions) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -235,10 +221,6 @@ public class ClsUserManagement {
         return newUserId;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  UPDATE — Update user info + permissions
-    //  Returns: true if successful
-    // ═══════════════════════════════════════════════════════
 
     public boolean updateUser(UserModel user, Map<String, Boolean> permissions) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -283,10 +265,8 @@ public class ClsUserManagement {
         return success;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  DELETE — Remove user + their permissions
-    //  Returns: true if successful
-    // ═══════════════════════════════════════════════════════
+    //  DELETE
+
 
     public boolean deleteUser(int userId) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -317,10 +297,8 @@ public class ClsUserManagement {
         return success;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  VALIDATE — Check if username already exists
-    //  excludeUserId: pass -1 when creating, pass user.id when editing
-    // ═══════════════════════════════════════════════════════
+    //  VALIDATE
+
 
     public boolean isUsernameTaken(String username, int excludeUserId) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -354,9 +332,7 @@ public class ClsUserManagement {
         return taken;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  VALIDATE — Check if email already exists
-    // ═══════════════════════════════════════════════════════
+    //  VALIDATE
 
     public boolean isEmailTaken(String email, int excludeUserId) {
         if (email == null || email.isEmpty()) return false;
@@ -391,9 +367,7 @@ public class ClsUserManagement {
         return taken;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  SEARCH — Filter users by name or username
-    // ═══════════════════════════════════════════════════════
+    //  SEARCH
 
     public List<UserModel> searchUsers(String query) {
         List<UserModel> users = new ArrayList<>();
@@ -436,10 +410,7 @@ public class ClsUserManagement {
         return users;
     }
 
-    // ═══════════════════════════════════════════════════════
-    //  HELPER — Insert permissions for a user
-    //  Gets module IDs from DB by name then inserts rows
-    // ═══════════════════════════════════════════════════════
+    //  HELPER
 
     private void insertPermissions(SQLiteDatabase db, int userId, Map<String, Boolean> permissions) {
         for (Map.Entry<String, Boolean> entry : permissions.entrySet()) {
@@ -476,9 +447,7 @@ public class ClsUserManagement {
         }
     }
 
-    // ═══════════════════════════════════════════════════════
     //  COUNT — Total users
-    // ═══════════════════════════════════════════════════════
 
     public int getUserCount() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();

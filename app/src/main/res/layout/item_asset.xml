@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_user_list_item"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <!-- Avatar circle with initial -->
+        <FrameLayout
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="10dp">
+            <View
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_card_icon_circle_purple" />
+            <TextView
+                android:id="@+id/tvAssetInitial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="A"
+                android:textColor="#FFFBF5"
+                android:textSize="15sp"
+                android:fontFamily="@font/bebas_neue" />
+        </FrameLayout>
+
+        <!-- Asset name + tag -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvItemAssetName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Treadmill"
+                android:textColor="#1A1A2E"
+                android:textSize="13sp"
+                android:singleLine="true"
+                android:ellipsize="end" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvItemTagNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AF-MNL-001"
+                    android:textColor="#80443355"
+                    android:textSize="10sp" />
+
+                <!-- UNTAGGED chip — only visible when no tag + no barcode -->
+                <TextView
+                    android:id="@+id/tvItemUntagged"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UNTAGGED"
+                    android:textColor="#FF6B6B"
+                    android:textSize="8sp"
+                    android:fontFamily="@font/bebas_neue"
+                    android:background="@drawable/bg_btn_danger"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:layout_marginStart="6dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Club badge -->
+        <TextView
+            android:id="@+id/tvItemClub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Makati"
+            android:textColor="#7743DB"
+            android:textSize="9sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.08"
+            android:background="@drawable/bg_role_badge"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp" />
+
+    </LinearLayout>
+</FrameLayout>

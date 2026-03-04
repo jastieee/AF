@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog"
+    android:padding="24dp">
+
+    <!-- Dialog title row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp">
+
+        <FrameLayout
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="12dp">
+            <View
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_card_icon_circle_lilac" />
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_settings"
+                app:tint="#FFFBF5" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvDialogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADD TYPE"
+                android:textColor="#1A1A2E"
+                android:textSize="16sp"
+                android:fontFamily="@font/bebas_neue"
+                android:letterSpacing="0.1" />
+            <TextView
+                android:id="@+id/tvDialogSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fill in the details below"
+                android:textColor="#7743DB"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Name field -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NAME"
+        android:textColor="#1A1A2E"
+        android:textSize="10sp"
+        android:fontFamily="@font/bebas_neue"
+        android:letterSpacing="0.12"
+        android:layout_marginBottom="4dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/bg_input_field"
+        android:layout_marginBottom="14dp">
+        <EditText
+            android:id="@+id/etTypeName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:background="@null"
+            android:hint="e.g. Cardio Equipment"
+            android:textColorHint="#80C3ACD0"
+            android:textColor="#1A1A2E"
+            android:textSize="12sp"
+            android:singleLine="true"
+            android:inputType="textCapWords" />
+    </FrameLayout>
+
+    <!-- Description field -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DESCRIPTION (OPTIONAL)"
+        android:textColor="#1A1A2E"
+        android:textSize="10sp"
+        android:fontFamily="@font/bebas_neue"
+        android:letterSpacing="0.12"
+        android:layout_marginBottom="4dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@drawable/bg_input_field"
+        android:layout_marginBottom="24dp">
+        <EditText
+            android:id="@+id/etTypeDescrip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:background="@null"
+            android:hint="Brief description..."
+            android:textColorHint="#80C3ACD0"
+            android:textColor="#1A1A2E"
+            android:textSize="12sp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:maxLines="3" />
+    </FrameLayout>
+
+    <!-- Action buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_icon_btn"
+            android:clickable="true"
+            android:focusable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="CANCEL"
+                android:textColor="#7743DB"
+                android:textSize="12sp"
+                android:fontFamily="@font/bebas_neue"
+                android:letterSpacing="0.1" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_primary"
+            android:clickable="true"
+            android:focusable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="SAVE"
+                android:textColor="#FFFBF5"
+                android:textSize="12sp"
+                android:fontFamily="@font/bebas_neue"
+                android:letterSpacing="0.1" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

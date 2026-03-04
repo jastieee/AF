@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFBF5">
+
+    <!-- Ambient orb -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_orb_purple"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintDimensionRatio="1:1" />
+
+    <!--  HEADER                                    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="#FFFBF5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.10">
+
+        <!-- Back -->
+        <FrameLayout
+            android:id="@+id/btnBack"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@drawable/bg_icon_btn"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="#7743DB" />
+        </FrameLayout>
+
+        <!-- Title -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ASSET INVENTORY"
+                android:textColor="#1A1A2E"
+                android:textSize="17sp"
+                android:fontFamily="@font/bebas_neue"
+                android:letterSpacing="0.12" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Track &amp; manage assets"
+                android:textColor="#7743DB"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Right: asset count badge -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_badge_purple"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <TextView
+                android:id="@+id/tvAssetCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#7743DB"
+                android:textSize="15sp"
+                android:fontFamily="@font/bebas_neue" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" ASSETS"
+                android:textColor="#80443355"
+                android:textSize="10sp"
+                android:fontFamily="@font/bebas_neue"
+                android:letterSpacing="0.1" />
+        </LinearLayout>
+
+        <!-- Bottom divider -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@drawable/bg_header_div"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/actionBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/headerBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Search box -->
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_input_field" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_search"
+                    app:tint="#7743DB"
+                    android:layout_marginEnd="8dp" />
+                <EditText
+                    android:id="@+id/etSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="Search by name, tag, barcode, club..."
+                    android:textColorHint="#80443355"
+                    android:textColor="#1A1A2E"
+                    android:textSize="12sp"
+                    android:singleLine="true" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Upload CSV -->
+        <Button
+            android:id="@+id/btnUploadCsv"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="UPLOAD CSV"
+            android:textColor="#7743DB"
+            android:textSize="10sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.06"
+            android:background="@drawable/bg_perm_card_on"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+        <!-- Register Tag -->
+        <Button
+            android:id="@+id/btnRegisterTag"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="REGISTER TAG"
+            android:textColor="#C3ACD0"
+            android:textSize="10sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.06"
+            android:background="@drawable/bg_perm_card_off"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+        <!-- Add Item -->
+        <Button
+            android:id="@+id/btnAddItem"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="+ ADD ITEM"
+            android:textColor="#FFFBF5"
+            android:textSize="10sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.06"
+            android:background="@drawable/bg_button_primary"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp" />
+
+    </LinearLayout>
+
+    <!--  TABLE HEADER ROW                          -->
+    <LinearLayout
+        android:id="@+id/tableHeader"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:orientation="horizontal"
+        android:background="#F0E8F8"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/actionBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="ASSET NAME"
+            android:textColor="#7743DB"
+            android:textSize="9sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="ASSET TAG"
+            android:textColor="#7743DB"
+            android:textSize="9sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:text="BARCODE"
+            android:textColor="#7743DB"
+            android:textSize="9sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CLUB"
+            android:textColor="#7743DB"
+            android:textSize="9sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="TYPE"
+            android:textColor="#7743DB"
+            android:textSize="9sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="STATUS"
+            android:textColor="#7743DB"
+            android:textSize="9sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.1" />
+
+    </LinearLayout>
+
+    <!--  ASSET LIST                                -->
+    <ListView
+        android:id="@+id/listViewAssets"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tableHeader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Empty state -->
+    <LinearLayout
+        android:id="@+id/emptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tableHeader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_inventory"
+            app:tint="#C3ACD0"
+            android:alpha="0.5" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No assets found"
+            android:textColor="#80443355"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload a CSV or add items manually"
+            android:textColor="#50443355"
+            android:textSize="11sp"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

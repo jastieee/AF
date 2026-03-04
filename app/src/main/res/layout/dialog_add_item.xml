@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Dialog title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADD ASSET"
+            android:textColor="#1A1A2E"
+            android:textSize="20sp"
+            android:fontFamily="@font/bebas_neue"
+            android:letterSpacing="0.08" />
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="2dp"
+            android:background="#7743DB"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Two column layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <!-- LEFT -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="10dp">
+
+                <TextView style="@style/FieldLabel" android:text="BARCODE (SCAN OR TYPE)" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" android:popupBackground="#FFFFFF"
+                        />
+                    <EditText android:id="@+id/etDialogBarCode" style="@style/FieldInput"
+                        android:hint="Scan or type barcode"
+                        android:imeOptions="actionNext"
+                        android:inputType="text" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="ASSET TAG NO. (e.g. AF-MNL-001)" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText android:id="@+id/etDialogAssetTagNo" style="@style/FieldInput"
+                        android:hint="AF-CLUB-SEQ"
+                        android:inputType="text" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="ASSET NAME *" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText android:id="@+id/etDialogAsset" style="@style/FieldInput"
+                        android:hint="e.g. Treadmill"
+                        android:inputType="text" />
+                </FrameLayout>
+
+<!--                <TextView style="@style/FieldLabel" android:text="CLUB" />-->
+<!--                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">-->
+<!--                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />-->
+<!--                    <EditText android:id="@+id/etDialogClub" style="@style/FieldInput"-->
+<!--                        android:hint="e.g. Makati"-->
+<!--                        android:inputType="text" />-->
+<!--                </FrameLayout>-->
+
+                <TextView style="@style/FieldLabel" android:text="CLUB ASSIGNED" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText android:id="@+id/etDialogAssignedType" style="@style/FieldInput"
+                        android:hint="e.g. Makati"
+                        android:inputType="text" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="TYPE OF ASSET" />
+                <FrameLayout style="@style/FieldWrap">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:background="@drawable/bg_input_field" />
+                    <Spinner
+                        android:id="@+id/spinnerTypeOfAsset"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:background="@null"
+                        android:popupBackground="#F7EFE5"
+                        android:spinnerMode="dropdown" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <!-- RIGHT -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp">
+
+                <TextView style="@style/FieldLabel" android:text="MAKE / BRAND" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText android:id="@+id/etDialogMakeBrand" style="@style/FieldInput"
+                        android:hint="e.g. Life Fitness"
+                        android:inputType="text" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="MODEL" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText android:id="@+id/etDialogModel" style="@style/FieldInput"
+                        android:hint="Model number"
+                        android:inputType="text" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="SERIAL NUMBER" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText android:id="@+id/etDialogSerialNumber" style="@style/FieldInput"
+                        android:hint="Serial number"
+                        android:inputType="text" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="DATE DELIVERED" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText android:id="@+id/etDialogDateDelivered" style="@style/FieldInput"
+                        android:hint="YYYY-MM-DD"
+                        android:inputType="text" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="PURCHASE PRICE" />
+                <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText android:id="@+id/etDialogPurchasePrice" style="@style/FieldInput"
+                        android:hint="0.00"
+                        android:inputType="numberDecimal" />
+                </FrameLayout>
+
+                <TextView style="@style/FieldLabel" android:text="LOCATION IN CLUB" />
+                <FrameLayout style="@style/FieldWrap">
+                    <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
+                    <EditText android:id="@+id/etDialogLocation" style="@style/FieldInput"
+                        android:hint="e.g. Cardio Floor"
+                        android:inputType="text" />
+                </FrameLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Action buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnDialogCancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="CANCEL"
+                android:textColor="#C3ACD0"
+                android:textSize="12sp"
+                android:fontFamily="@font/bebas_neue"
+                android:background="@drawable/bg_perm_card_off"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnDialogSave"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="SAVE ASSET"
+                android:textColor="#FFFBF5"
+                android:textSize="12sp"
+                android:fontFamily="@font/bebas_neue"
+                android:background="@drawable/bg_button_primary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
