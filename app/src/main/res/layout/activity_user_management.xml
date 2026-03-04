@@ -5,15 +5,15 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#FFFBF5">
 
     <!-- ═══════════════════════════════════════════ -->
-    <!--  MAIN CONTENT (full screen)                -->
+    <!--  MAIN CONTENT                              -->
     <!-- ═══════════════════════════════════════════ -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000">
+        android:background="#FFFBF5">
 
         <!-- Ambient orb -->
         <View
@@ -32,7 +32,7 @@
             android:layout_height="0dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:background="#000000"
+            android:background="#FFFBF5"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
                     android:layout_height="16dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_arrow_back"
-                    app:tint="#CC66DA" />
+                    app:tint="#7743DB" />
             </FrameLayout>
 
             <!-- Title -->
@@ -70,7 +70,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="USER MANAGEMENT"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#1A1A2E"
                     android:textSize="17sp"
                     android:fontFamily="@font/bebas_neue"
                     android:letterSpacing="0.12" />
@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Manage accounts &amp; permissions"
-                    android:textColor="#CC66DA"
+                    android:textColor="#7743DB"
                     android:textSize="10sp" />
             </LinearLayout>
 
@@ -88,7 +88,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginEnd="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
@@ -110,20 +109,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="#FAEB92"
+                        android:textColor="#7743DB"
                         android:textSize="15sp"
                         android:fontFamily="@font/bebas_neue" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" USERS"
-                        android:textColor="#70FFFFFF"
+                        android:textColor="#80443355"
                         android:textSize="10sp"
                         android:fontFamily="@font/bebas_neue"
                         android:letterSpacing="0.1" />
                 </LinearLayout>
 
-                <!-- Hamburger menu button to open drawer -->
+                <!-- Hamburger menu -->
                 <FrameLayout
                     android:id="@+id/btnOpenDrawer"
                     android:layout_width="34dp"
@@ -136,7 +135,7 @@
                         android:layout_height="16dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_menu"
-                        app:tint="#CC66DA" />
+                        app:tint="#7743DB" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -185,14 +184,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="CREATE USER"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#1A1A2E"
                         android:textSize="20sp"
                         android:fontFamily="@font/bebas_neue"
                         android:letterSpacing="0.08" />
                     <View
                         android:layout_width="30dp"
                         android:layout_height="2dp"
-                        android:background="#FAEB92"
+                        android:background="#7743DB"
                         android:layout_marginTop="4dp" />
                 </LinearLayout>
 
@@ -201,7 +200,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CLEAR FORM"
-                    android:textColor="#50FFFFFF"
+                    android:textColor="#80443355"
                     android:textSize="10sp"
                     android:letterSpacing="0.1"
                     android:fontFamily="@font/bebas_neue"
@@ -228,7 +227,6 @@
                     android:orientation="vertical"
                     android:layout_marginEnd="16dp">
 
-                    <!-- Full Name -->
                     <TextView style="@style/FieldLabel" android:text="FULL NAME" />
                     <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
                         <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
@@ -239,7 +237,6 @@
                             android:inputType="textPersonName" />
                     </FrameLayout>
 
-                    <!-- Username -->
                     <TextView style="@style/FieldLabel" android:text="USERNAME" />
                     <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
                         <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
@@ -250,7 +247,6 @@
                             android:inputType="text" />
                     </FrameLayout>
 
-                    <!-- Email -->
                     <TextView style="@style/FieldLabel" android:text="EMAIL ADDRESS" />
                     <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
                         <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
@@ -261,7 +257,6 @@
                             android:inputType="textEmailAddress" />
                     </FrameLayout>
 
-                    <!-- ── FIX 1: Role spinner with white text via custom adapter in Java ── -->
                     <TextView style="@style/FieldLabel" android:text="ROLE" />
                     <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
                         <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
@@ -272,10 +267,9 @@
                             android:background="@null"
                             android:paddingStart="12dp"
                             android:paddingEnd="12dp"
-                            android:popupBackground="#1A1A1A" />
+                            android:popupBackground="#F7EFE5" />
                     </FrameLayout>
 
-                    <!-- Password -->
                     <TextView style="@style/FieldLabel" android:text="PASSWORD" />
                     <FrameLayout style="@style/FieldWrap" android:layout_marginBottom="10dp">
                         <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
@@ -286,7 +280,6 @@
                             android:inputType="textPassword" />
                     </FrameLayout>
 
-                    <!-- Confirm Password -->
                     <TextView style="@style/FieldLabel" android:text="CONFIRM PASSWORD" />
                     <FrameLayout style="@style/FieldWrap">
                         <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
@@ -309,18 +302,16 @@
                     android:orientation="vertical"
                     android:layout_marginStart="16dp">
 
-                    <!-- Section label -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="MODULE ACCESS PERMISSIONS"
-                        android:textColor="#CC66DA"
+                        android:textColor="#7743DB"
                         android:textSize="10sp"
                         android:letterSpacing="0.14"
                         android:fontFamily="@font/bebas_neue"
                         android:layout_marginBottom="8dp" />
 
-                    <!-- ── FIX 2: VERTICAL LIST — title on left, checkbox on right ── -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
@@ -341,29 +332,24 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:background="@drawable/bg_perm_row_selector">
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Inventory"
-                                android:textColor="#FFFFFF"
+                                android:textColor="#1A1A2E"
                                 android:textSize="13sp"
                                 android:singleLine="true" />
-
                             <CheckBox
                                 android:id="@+id/cbInventory"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:buttonTint="#9929EA"
+                                android:buttonTint="#7743DB"
                                 android:clickable="false"
                                 android:focusable="false" />
                         </LinearLayout>
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#12FFFFFF" />
+                        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#30C3ACD0" />
 
                         <!-- Row: Maintenance -->
                         <LinearLayout
@@ -378,29 +364,24 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:background="@drawable/bg_perm_row_selector">
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Maintenance"
-                                android:textColor="#FFFFFF"
+                                android:textColor="#1A1A2E"
                                 android:textSize="13sp"
                                 android:singleLine="true" />
-
                             <CheckBox
                                 android:id="@+id/cbMaintenance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:buttonTint="#9929EA"
+                                android:buttonTint="#7743DB"
                                 android:clickable="false"
                                 android:focusable="false" />
                         </LinearLayout>
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#12FFFFFF" />
+                        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#30C3ACD0" />
 
                         <!-- Row: Logs -->
                         <LinearLayout
@@ -415,29 +396,24 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:background="@drawable/bg_perm_row_selector">
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Logs"
-                                android:textColor="#FFFFFF"
+                                android:textColor="#1A1A2E"
                                 android:textSize="13sp"
                                 android:singleLine="true" />
-
                             <CheckBox
                                 android:id="@+id/cbLogs"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:buttonTint="#9929EA"
+                                android:buttonTint="#7743DB"
                                 android:clickable="false"
                                 android:focusable="false" />
                         </LinearLayout>
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="#12FFFFFF" />
+                        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#30C3ACD0" />
 
                         <!-- Row: User Management -->
                         <LinearLayout
@@ -452,30 +428,26 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:background="@drawable/bg_perm_row_selector">
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="User Management"
-                                android:textColor="#FFFFFF"
+                                android:textColor="#1A1A2E"
                                 android:textSize="13sp"
                                 android:singleLine="true" />
-
                             <CheckBox
                                 android:id="@+id/cbUserManagement"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:buttonTint="#9929EA"
+                                android:buttonTint="#7743DB"
                                 android:clickable="false"
                                 android:focusable="false" />
                         </LinearLayout>
 
                     </LinearLayout>
 
-                    <!-- ── FIX 3: COMPACT EQUAL BUTTONS ──
-                         Create mode : Delete GONE  → Save fills full width (weight 2/2)
-                         Edit mode   : Delete VISIBLE → both equal (weight 1/2 each) -->
+                    <!-- Buttons -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
@@ -503,7 +475,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="2"
                             android:text="SAVE USER"
-                            android:textColor="#000000"
+                            android:textColor="#FFFBF5"
                             android:textSize="11sp"
                             android:fontFamily="@font/bebas_neue"
                             android:letterSpacing="0.04"
@@ -518,7 +490,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- ═══════════════════════════════════════════ -->
-    <!--  DRAWER — User List (slides from left)     -->
+    <!--  DRAWER — User List                        -->
     <!-- ═══════════════════════════════════════════ -->
     <LinearLayout
         android:id="@+id/drawerPanel"
@@ -542,7 +514,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="ALL USERS"
-                android:textColor="#CC66DA"
+                android:textColor="#7743DB"
                 android:textSize="11sp"
                 android:letterSpacing="0.16"
                 android:fontFamily="@font/bebas_neue" />
@@ -559,7 +531,7 @@
                     android:layout_height="13dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_close"
-                    app:tint="#FFFFFF" />
+                    app:tint="#1A1A2E" />
             </FrameLayout>
         </LinearLayout>
 
@@ -570,15 +542,15 @@
             android:layout_marginBottom="10dp">
             <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_input_field" />
             <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal" android:gravity="center_vertical" android:paddingStart="10dp" android:paddingEnd="10dp">
-                <ImageView android:layout_width="13dp" android:layout_height="13dp" android:src="@drawable/ic_search" app:tint="#9929EA" android:layout_marginEnd="7dp" />
+                <ImageView android:layout_width="13dp" android:layout_height="13dp" android:src="@drawable/ic_search" app:tint="#7743DB" android:layout_marginEnd="7dp" />
                 <EditText
                     android:id="@+id/etSearch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:hint="Search users..."
-                    android:textColorHint="#35FFFFFF"
-                    android:textColor="#FFFFFF"
+                    android:textColorHint="#80443355"
+                    android:textColor="#1A1A2E"
                     android:textSize="12sp"
                     android:singleLine="true" />
             </LinearLayout>

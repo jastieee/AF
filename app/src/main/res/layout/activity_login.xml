@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#000000">
+    android:background="#FFFBF5">
 
     <!-- Decorative gradient orb top-right -->
     <View
@@ -58,7 +58,7 @@
                     android:layout_height="44dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_fitness_center"
-                    app:tint="#FAEB92" />
+                    app:tint="#FFFBF5" />
             </FrameLayout>
 
             <!-- App Name -->
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="FITNESS"
-                android:textColor="#FFFFFF"
+                android:textColor="#1A1A2E"
                 android:textSize="22sp"
                 android:letterSpacing="0.15"
                 android:fontFamily="@font/bebas_neue"
@@ -79,21 +79,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Asset Management System"
-                android:textColor="#CC66DA"
+                android:textColor="#7743DB"
                 android:textSize="12sp"
                 android:letterSpacing="0.08"
                 android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
 
-        <!-- Divider line with gold accent -->
+        <!-- Divider line with purple accent -->
         <View
             android:layout_width="48dp"
             android:layout_height="2dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="28dp"
             android:layout_marginBottom="32dp"
-            android:background="#FAEB92" />
+            android:background="#7743DB" />
 
         <!-- Card Panel -->
         <LinearLayout
@@ -108,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Welcome Back"
-                android:textColor="#FFFFFF"
+                android:textColor="#1A1A2E"
                 android:textSize="24sp"
                 android:fontFamily="@font/bebas_neue"
                 android:letterSpacing="0.05" />
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:text="Sign in to continue"
-                android:textColor="#80FFFFFF"
+                android:textColor="#80443355"
                 android:textSize="13sp" />
 
             <!-- Username Label -->
@@ -126,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="USERNAME"
-                android:textColor="#CC66DA"
+                android:textColor="#7743DB"
                 android:textSize="11sp"
                 android:letterSpacing="0.12"
                 android:layout_marginBottom="6dp" />
@@ -154,7 +154,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:src="@drawable/ic_person"
-                        app:tint="#9929EA" />
+                        app:tint="#7743DB" />
 
                     <EditText
                         android:id="@+id/etUsername"
@@ -164,8 +164,8 @@
                         android:layout_marginStart="10dp"
                         android:background="@null"
                         android:hint="Enter username"
-                        android:textColorHint="#50FFFFFF"
-                        android:textColor="#FFFFFF"
+                        android:textColorHint="#80443355"
+                        android:textColor="#1A1A2E"
                         android:textSize="14sp"
                         android:inputType="text"
                         android:imeOptions="actionNext"
@@ -178,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PASSWORD"
-                android:textColor="#CC66DA"
+                android:textColor="#7743DB"
                 android:textSize="11sp"
                 android:letterSpacing="0.12"
                 android:layout_marginBottom="6dp" />
@@ -206,7 +206,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:src="@drawable/ic_lock"
-                        app:tint="#9929EA" />
+                        app:tint="#7743DB" />
 
                     <EditText
                         android:id="@+id/etPassword"
@@ -216,8 +216,8 @@
                         android:layout_marginStart="10dp"
                         android:background="@null"
                         android:hint="Enter password"
-                        android:textColorHint="#50FFFFFF"
-                        android:textColor="#FFFFFF"
+                        android:textColorHint="#80443355"
+                        android:textColor="#1A1A2E"
                         android:textSize="14sp"
                         android:inputType="textPassword"
                         android:imeOptions="actionDone"
@@ -228,7 +228,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_visibility_off"
-                        app:tint="#60FFFFFF"
+                        app:tint="#80C3ACD0"
                         android:clickable="true"
                         android:focusable="true" />
                 </LinearLayout>
@@ -240,7 +240,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:text="SIGN IN"
-                android:textColor="#000000"
+                android:textColor="#FFFBF5"
                 android:textSize="14sp"
                 android:letterSpacing="0.1"
                 android:background="@drawable/bg_button_primary"
@@ -256,7 +256,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:text="© 2026 NSSI · Anytime Fitness"
-            android:textColor="#30FFFFFF"
+            android:textColor="#80443355"
             android:textSize="11sp"
             android:letterSpacing="0.05" />
 

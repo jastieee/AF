@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme (Day) -->
-    <style name="Theme.Anytimefitness" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Base application theme (Light) -->
+    <style name="Theme.Anytimefitness" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color -->
-        <item name="colorPrimary">#9929EA</item>
-        <item name="colorPrimaryVariant">#7A1BC4</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimary">#7743DB</item>
+        <item name="colorPrimaryVariant">#5C2DB8</item>
+        <item name="colorOnPrimary">#FFFBF5</item>
         <!-- Secondary brand color -->
-        <item name="colorSecondary">#CC66DA</item>
-        <item name="colorSecondaryVariant">#B44DC4</item>
-        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSecondary">#C3ACD0</item>
+        <item name="colorSecondaryVariant">#A890BA</item>
+        <item name="colorOnSecondary">#FFFBF5</item>
         <!-- Background & surface -->
-        <item name="android:colorBackground">#000000</item>
-        <item name="colorSurface">#111111</item>
-        <item name="colorOnBackground">#FFFFFF</item>
-        <item name="colorOnSurface">#FFFFFF</item>
-        <!-- Status bar — transparent so our layouts go edge to edge -->
+        <item name="android:colorBackground">#FFFBF5</item>
+        <item name="colorSurface">#F7EFE5</item>
+        <item name="colorOnBackground">#1A1A2E</item>
+        <item name="colorOnSurface">#1A1A2E</item>
+        <!-- Status bar -->
         <item name="android:statusBarColor">#00000000</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
         <!-- Navigation bar -->
-        <item name="android:navigationBarColor">#000000</item>
+        <item name="android:navigationBarColor">#FFFBF5</item>
         <!-- Alert Dialog styling -->
-        <item name="alertDialogTheme">@style/DarkAlertDialog</item>
+        <item name="alertDialogTheme">@style/LightAlertDialog</item>
         <!-- Ripple color for card tap feedback -->
-        <item name="colorControlHighlight">#309929EA</item>
+        <item name="colorControlHighlight">#307743DB</item>
+        <!-- Force light mode — never auto-switch to dark -->
+        <item name="android:forceDarkAllowed" tools:targetApi="29">false</item>
     </style>
 
-    <!-- Dark Alert Dialog -->
-    <style name="DarkAlertDialog" parent="Theme.AppCompat.Dialog.Alert">
+    <!-- Light Alert Dialog -->
+    <style name="LightAlertDialog" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:windowBackground">@drawable/bg_dialog</item>
-        <item name="android:textColorPrimary">#FFFFFF</item>
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="colorAccent">#9929EA</item>
+        <item name="android:textColorPrimary">#1A1A2E</item>
+        <item name="android:textColor">#1A1A2E</item>
+        <item name="colorAccent">#7743DB</item>
         <item name="buttonBarPositiveButtonStyle">@style/DialogButtonPositive</item>
         <item name="buttonBarNegativeButtonStyle">@style/DialogButtonNegative</item>
     </style>
 
+    <!-- Keep old name as alias so existing Java refs don't break -->
+    <style name="DarkAlertDialog" parent="LightAlertDialog" />
+
     <style name="DialogButtonPositive" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textColor">#FAEB92</item>
+        <item name="android:textColor">#7743DB</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="DialogButtonNegative" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textColor">#CC66DA</item>
+        <item name="android:textColor">#C3ACD0</item>
     </style>
 
 </resources>

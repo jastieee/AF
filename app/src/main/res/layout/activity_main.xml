@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#FFFBF5">
 
     <!-- ═══════════════════════════════════════════ -->
-    <!--  AMBIENT ORBS (decorative, same as login)  -->
+    <!--  AMBIENT ORBS                              -->
     <!-- ═══════════════════════════════════════════ -->
 
     <View
@@ -40,6 +40,7 @@
         android:layout_height="0dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
+        android:background="#FFFBF5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +58,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <!-- Small logo badge -->
             <FrameLayout
                 android:layout_width="36dp"
                 android:layout_height="36dp"
@@ -71,7 +71,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_fitness_center"
-                    app:tint="#FAEB92" />
+                    app:tint="#FFFBF5" />
             </FrameLayout>
 
             <LinearLayout
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ANYTIME FITNESS"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#1A1A2E"
                     android:textSize="16sp"
                     android:letterSpacing="0.12"
                     android:fontFamily="@font/bebas_neue" />
@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Asset Management System"
-                    android:textColor="#CC66DA"
+                    android:textColor="#7743DB"
                     android:textSize="10sp"
                     android:letterSpacing="0.04" />
             </LinearLayout>
@@ -121,7 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Administrator"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#1A1A2E"
                     android:textSize="13sp"
                     android:fontFamily="@font/bebas_neue"
                     android:letterSpacing="0.06" />
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Admin"
-                    android:textColor="#FAEB92"
+                    android:textColor="#7743DB"
                     android:textSize="10sp"
                     android:letterSpacing="0.08" />
             </LinearLayout>
@@ -149,7 +149,7 @@
                     android:layout_height="18dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_logout"
-                    app:tint="#CC66DA" />
+                    app:tint="#7743DB" />
             </FrameLayout>
 
         </LinearLayout>
@@ -174,7 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DASHBOARD"
-        android:textColor="#FFFFFF"
+        android:textColor="#1A1A2E"
         android:textSize="13sp"
         android:fontFamily="@font/bebas_neue"
         android:letterSpacing="0.2"
@@ -187,7 +187,7 @@
         android:id="@+id/tvWelcomeAccent"
         android:layout_width="24dp"
         android:layout_height="2dp"
-        android:background="#FAEB92"
+        android:background="#7743DB"
         android:layout_marginStart="20dp"
         android:layout_marginTop="2dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -227,19 +227,17 @@
             app:layout_columnWeight="1"
             app:layout_rowWeight="1">
 
-            <!-- Accent top bar -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="#9929EA"
+                android:background="#7743DB"
                 android:layout_gravity="top" />
 
-            <!-- Card number watermark -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="01"
-                android:textColor="#089929EA"
+                android:textColor="#157743DB"
                 android:textSize="56sp"
                 android:fontFamily="@font/bebas_neue"
                 android:layout_gravity="bottom|end"
@@ -253,7 +251,6 @@
                 android:gravity="center"
                 android:padding="16dp">
 
-                <!-- Icon circle -->
                 <FrameLayout
                     android:layout_width="52dp"
                     android:layout_height="52dp"
@@ -267,14 +264,14 @@
                         android:layout_height="26dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_inventory"
-                        app:tint="#FFFFFF" />
+                        app:tint="#FFFBF5" />
                 </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="INVENTORY"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#1A1A2E"
                     android:textSize="18sp"
                     android:fontFamily="@font/bebas_neue"
                     android:letterSpacing="0.1"
@@ -284,7 +281,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Track &amp; manage assets"
-                    android:textColor="#80FFFFFF"
+                    android:textColor="#80443355"
                     android:textSize="11sp"
                     android:gravity="center"
                     android:layout_marginTop="3dp" />
@@ -310,14 +307,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="#CC66DA"
+                android:background="#C3ACD0"
                 android:layout_gravity="top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="02"
-                android:textColor="#08CC66DA"
+                android:textColor="#20C3ACD0"
                 android:textSize="56sp"
                 android:fontFamily="@font/bebas_neue"
                 android:layout_gravity="bottom|end"
@@ -344,14 +341,14 @@
                         android:layout_height="26dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_build"
-                        app:tint="#FFFFFF" />
+                        app:tint="#FFFBF5" />
                 </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MAINTENANCE"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#1A1A2E"
                     android:textSize="18sp"
                     android:fontFamily="@font/bebas_neue"
                     android:letterSpacing="0.1"
@@ -361,7 +358,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Service &amp; repair records"
-                    android:textColor="#80FFFFFF"
+                    android:textColor="#80443355"
                     android:textSize="11sp"
                     android:gravity="center"
                     android:layout_marginTop="3dp" />
@@ -387,14 +384,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="#FAEB92"
+                android:background="#C3ACD0"
                 android:layout_gravity="top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="03"
-                android:textColor="#0CFAEB92"
+                android:textColor="#20C3ACD0"
                 android:textSize="56sp"
                 android:fontFamily="@font/bebas_neue"
                 android:layout_gravity="bottom|end"
@@ -421,14 +418,14 @@
                         android:layout_height="26dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_history"
-                        app:tint="#000000" />
+                        app:tint="#FFFBF5" />
                 </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="LOGS"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#1A1A2E"
                     android:textSize="18sp"
                     android:fontFamily="@font/bebas_neue"
                     android:letterSpacing="0.1"
@@ -438,7 +435,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Activity &amp; audit trail"
-                    android:textColor="#80FFFFFF"
+                    android:textColor="#80443355"
                     android:textSize="11sp"
                     android:gravity="center"
                     android:layout_marginTop="3dp" />
@@ -464,14 +461,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="#FAEB92"
+                android:background="#7743DB"
                 android:layout_gravity="top" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="04"
-                android:textColor="#0CFFFFFF"
+                android:textColor="#157743DB"
                 android:textSize="56sp"
                 android:fontFamily="@font/bebas_neue"
                 android:layout_gravity="bottom|end"
@@ -498,14 +495,14 @@
                         android:layout_height="26dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_manage_accounts"
-                        app:tint="#FFFFFF" />
+                        app:tint="#FFFBF5" />
                 </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="USER MANAGEMENT"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#1A1A2E"
                     android:textSize="16sp"
                     android:fontFamily="@font/bebas_neue"
                     android:letterSpacing="0.08"
@@ -515,7 +512,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Accounts &amp; permissions"
-                    android:textColor="#80FFFFFF"
+                    android:textColor="#80443355"
                     android:textSize="11sp"
                     android:gravity="center"
                     android:layout_marginTop="3dp" />

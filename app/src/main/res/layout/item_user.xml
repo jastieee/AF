@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="A"
-                android:textColor="#FFFFFF"
+                android:textColor="#FFFBF5"
                 android:textSize="15sp"
                 android:fontFamily="@font/bebas_neue" />
         </FrameLayout>
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Administrator"
-                android:textColor="#FFFFFF"
+                android:textColor="#1A1A2E"
                 android:textSize="13sp"
                 android:singleLine="true"
                 android:ellipsize="end" />
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="\@admin"
-                android:textColor="#60FFFFFF"
+                android:textColor="#80443355"
                 android:textSize="10sp" />
         </LinearLayout>
 
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Admin"
-            android:textColor="#FAEB92"
+            android:textColor="#7743DB"
             android:textSize="9sp"
             android:fontFamily="@font/bebas_neue"
             android:letterSpacing="0.08"
